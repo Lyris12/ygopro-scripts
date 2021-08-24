@@ -49,8 +49,8 @@ end
 function c36970611.target(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chkc then return chkc:IsOnField() and chkc:IsAbleToRemove() end
 	if chk==0 then return true end
-	local xg=Group.CreateGroup()
-	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg:AddCard(e:GetHandler()) end
+	local xg=nil
+	if not e:GetHandler():IsStatus(STATUS_EFFECT_ENABLED) then xg=e:GetHandler() end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_REMOVE)
 	local g=Duel.SelectTarget(tp,Card.IsAbleToRemove,tp,LOCATION_ONFIELD,LOCATION_ONFIELD,1,1,xg,tp,POS_FACEDOWN)
 	Duel.SetOperationInfo(0,CATEGORY_REMOVE,g,1,0,0)
